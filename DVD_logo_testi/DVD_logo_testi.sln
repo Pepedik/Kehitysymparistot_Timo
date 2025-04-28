@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35431.28
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35425.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVD_logo_testi", "DVD_logo_testi.csproj", "{1E91A5CB-7C1F-473E-8C18-220AF027AFC9}"
 EndProject
