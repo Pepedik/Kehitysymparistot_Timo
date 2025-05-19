@@ -1,0 +1,6 @@
+{
+    "Name": "Smol Bullet",
+    "Gravity": 175.0,
+    "DMG": 1,
+    "Color": [ 0, 255, 0, 255 ]
+}

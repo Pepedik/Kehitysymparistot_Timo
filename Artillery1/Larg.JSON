@@ -1,0 +1,6 @@
+{
+    "Name": "Larg Bullet",
+    "Gravity": 125.0,
+    "DMG": 2,
+    "Color": [ 200, 100, 50, 255 ]
+}
