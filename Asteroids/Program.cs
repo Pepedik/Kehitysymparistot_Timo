@@ -1,11 +1,9 @@
 ﻿using Raylib_cs;
 using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Asteroids
 {
-    internal class Program
+    public class Program
     {
         Ship Player;
         List<Asteroids> asteroids;
@@ -30,7 +28,7 @@ namespace Asteroids
             Program game = new Program();
             game.Initiate();
             game.run();
-            
+
         }
         void StartLevel()
         {
@@ -51,85 +49,92 @@ namespace Asteroids
                 asteroids.Add(new Asteroids(startpos, 2, AasteroidImage[2]));
             }
         }
-        void run() 
-        { 
+        public void run()
+        {
             while (Raylib.WindowShouldClose() == false)
             {
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Black);
 
-                Player.Draw();
-                Player.Update();
-                timer -= Raylib.GetFrameTime();
-
-                for (int i = 0; i < asteroids.Count; i += 1)
-                {
-                    Asteroids a = asteroids[i];
-                    a.Update();
-                    a.Draw();
-                }
-               
-                
-                if(Player.IsShooting == true)
-                {
-                    bullets.Add(new Bullet(Player.transform.Pos, Player.Dir * 250, Lasers, Player.angle));
-                }
-                
-                for (int i = 0; i < bullets.Count; i++)
-                {
-                    bullets[i].draw();
-                    bullets[i].Update();
-
-                }
-                for (int i = 0; i < bullets.Count; i++)
-                {
-                    for (int j = 0; j < asteroids.Count; j++)
-                    {
-                        Bullet bullet = bullets[i];
-                        Asteroids asteroid = asteroids[j];
-                        if (Raylib.CheckCollisionPointCircle(bullet.transform.Pos, asteroid.transform.Pos, asteroid.rad))
-                        {
-                            if (asteroid.size > 0)
-                            {
-                                asteroids.Add(new Asteroids(asteroid.transform.Pos, asteroid.size -1, AasteroidImage[asteroid.size -1]));
-                                asteroids.Add(new Asteroids(asteroid.transform.Pos, asteroid.size -1, AasteroidImage[asteroid.size -1]));
-                            }
-                            Score += 100;
-
-                            asteroids.Remove(asteroid); 
-                            bullets.Remove(bullet);
-                            break;
-                        }
-                    }
-                }
-                for (int i = 0; i < asteroids.Count; i++)
-                {
-                    Asteroids asteroid = asteroids[i];
-                    if (Raylib.CheckCollisionPointCircle(Player.transform.Pos, asteroid.transform.Pos, asteroid.rad))
-                    {
-                        if (timer <= 0)
-                        {
-                            Player.hp -= 1;
-                            timer = 1.0f;
-                        }
-                        if (Player.hp <= 0)
-                        {
-                            StartLevel();
-                        }
-                        asteroids.Remove(asteroid);
-                        break;
-                    }
-                }
-                Raylib.DrawText($"{Player.hp}", 100, 100, 30, Color.White);
-                Raylib.DrawText($"{Score}", 150, 100, 30, Color.White);
-
+                frame();
 
                 Raylib.EndDrawing();
+
             }
             Raylib.CloseWindow();
         }
+        public void frame()
+        {
+            Player.Draw();
+            Player.Update();
+            timer -= Raylib.GetFrameTime();
 
-        void Initiate()
+            for (int i = 0; i < asteroids.Count; i += 1)
+            {
+                Asteroids a = asteroids[i];
+                a.Update();
+                a.Draw();
+            }
+
+
+            if (Player.IsShooting == true)
+            {
+                bullets.Add(new Bullet(Player.transform.Pos, Player.Dir * 250, Lasers, Player.angle));
+            }
+
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                bullets[i].draw();
+                bullets[i].Update();
+
+            }
+            for (int i = 0; i < bullets.Count; i++)
+            {
+                for (int j = 0; j < asteroids.Count; j++)
+                {
+                    Bullet bullet = bullets[i];
+                    Asteroids asteroid = asteroids[j];
+                    if (Raylib.CheckCollisionPointCircle(bullet.transform.Pos, asteroid.transform.Pos, asteroid.rad))
+                    {
+                        if (asteroid.size > 0)
+                        {
+                            asteroids.Add(new Asteroids(asteroid.transform.Pos, asteroid.size - 1, AasteroidImage[asteroid.size - 1]));
+                            asteroids.Add(new Asteroids(asteroid.transform.Pos, asteroid.size - 1, AasteroidImage[asteroid.size - 1]));
+                        }
+                        Score += 100;
+
+                        asteroids.Remove(asteroid);
+                        bullets.Remove(bullet);
+                        break;
+                    }
+                }
+            }
+            for (int i = 0; i < asteroids.Count; i++)
+            {
+                Asteroids asteroid = asteroids[i];
+                if (Raylib.CheckCollisionPointCircle(Player.transform.Pos, asteroid.transform.Pos, asteroid.rad))
+                {
+                    if (timer <= 0)
+                    {
+                        Player.hp -= 1;
+                        timer = 1.0f;
+                    }
+                    if (Player.hp <= 0)
+                    {
+                        StartLevel();
+                    }
+                    asteroids.Remove(asteroid);
+                    break;
+                }
+            }
+            Raylib.DrawText($"{Player.hp}", 100, 100, 30, Color.White);
+            Raylib.DrawText($"{Score}", 150, 100, 30, Color.White);
+
+
+
+        }
+
+        public void Initiate()
         {
             Raylib.InitWindow(1000, 700, "Asteroids");
             Player = new Ship();

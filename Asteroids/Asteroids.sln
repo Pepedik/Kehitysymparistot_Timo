@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asteroids", "Asteroids.csproj", "{9DB1CC76-A7D0-4AB6-843B-41190744B368}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValikkoPeli", "..\ValikkoPeli\ValikkoPeli.csproj", "{71A5956A-0730-4960-B841-75421FC00E16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayGuiCreator", "..\RayGuiCreator\RayGuiCreator\RayGuiCreator.csproj", "{2C30B301-BA1F-EF9F-FA3F-A31E427A0BEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9DB1CC76-A7D0-4AB6-843B-41190744B368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB1CC76-A7D0-4AB6-843B-41190744B368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB1CC76-A7D0-4AB6-843B-41190744B368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A5956A-0730-4960-B841-75421FC00E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A5956A-0730-4960-B841-75421FC00E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A5956A-0730-4960-B841-75421FC00E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A5956A-0730-4960-B841-75421FC00E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C30B301-BA1F-EF9F-FA3F-A31E427A0BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C30B301-BA1F-EF9F-FA3F-A31E427A0BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C30B301-BA1F-EF9F-FA3F-A31E427A0BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C30B301-BA1F-EF9F-FA3F-A31E427A0BEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
