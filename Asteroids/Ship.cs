@@ -25,6 +25,9 @@ namespace Asteroids
         }
         public bool IsShooting = false;
         
+        /// <summary>
+        /// Handles moving and shooting of the ship.
+        /// </summary>
         public void Update()
         {
             if (Raylib.IsMouseButtonPressed(MouseButton.Left))
@@ -91,6 +94,7 @@ namespace Asteroids
 
 
         }
+
 
         public void Draw()
         {

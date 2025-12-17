@@ -10,6 +10,8 @@ namespace ValikkoPeli
     internal class SettingsMenu
     {
         public event EventHandler Back;
+        public event EventHandler Red;
+        public event EventHandler Blue;
         public void Draw()
         {
             MenuCreator creater = new MenuCreator(10, 10, 16, 300);
@@ -17,6 +19,16 @@ namespace ValikkoPeli
             {
                 Back.Invoke(this, new EventArgs());
             }
+            if (creater.Button("Red"))
+            {
+                Red.Invoke(this, new EventArgs());
+            }
+            if (creater.Button("Blue"))
+            {
+                Blue.Invoke(this, new EventArgs());
+            }
+
         }
+
     }
 }

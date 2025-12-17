@@ -49,6 +49,14 @@ namespace ValikkoPeli
         {
             current.Push(State.Quit);
         }
+        void BluePressed(object sender, EventArgs args)
+        {
+            AsteroidsGame.Skin(1);
+        }
+        void RedPressed(object sender, EventArgs args)
+        {
+            AsteroidsGame.Skin(2);
+        }
 
         public void Run()
         {
@@ -70,6 +78,9 @@ namespace ValikkoPeli
             pausemenu.Resume += this.ResumePressed;
             pausemenu.Options += this.SettingsPressed;
             mainmenu.QuitPressed += this.QuitPressed;
+            settingsMenu.Red += this.RedPressed;
+            settingsMenu.Blue += this.BluePressed;
+
             while (Raylib.WindowShouldClose() == false && current.Peek() != State.Quit)
             {
                 Update();

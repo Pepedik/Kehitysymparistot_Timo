@@ -10,6 +10,9 @@ namespace Asteroids
         List<Bullet> bullets;
         Texture2D Lasers;
         List<Texture2D> AasteroidImage;
+        Music BgMusic;
+        Texture2D RedShip;
+        Texture2D BlueShip;
         public float timer = 0;
         public float Score;
         public static Vector2 RandomDir()
@@ -26,6 +29,7 @@ namespace Asteroids
         static void Main(string[] args)
         {
             Program game = new Program();
+            Raylib.InitWindow(1000, 700, "Asteroids");
             game.Initiate();
             game.run();
 
@@ -51,6 +55,10 @@ namespace Asteroids
         }
         public void run()
         {
+
+
+
+
             while (Raylib.WindowShouldClose() == false)
             {
                 Raylib.BeginDrawing();
@@ -60,11 +68,13 @@ namespace Asteroids
 
                 Raylib.EndDrawing();
 
+
             }
             Raylib.CloseWindow();
         }
         public void frame()
         {
+            Raylib.UpdateMusicStream(BgMusic);
             Player.Draw();
             Player.Update();
             timer -= Raylib.GetFrameTime();
@@ -133,14 +143,30 @@ namespace Asteroids
 
 
         }
-
+        public void Skin(int ColorNumber)
+        {
+            if (ColorNumber == 1)
+            {
+                Player.image = new Sprite(BlueShip);
+            }
+            if (ColorNumber == 2)
+            {
+                Player.image = new Sprite(RedShip);
+            }
+            
+        }
         public void Initiate()
         {
-            Raylib.InitWindow(1000, 700, "Asteroids");
+
             Player = new Ship();
             asteroids = new List<Asteroids>();
-            Player.image = new Sprite(Raylib.LoadTexture("Data/Images/playerShip1_blue.png"));
-
+            BlueShip = (Raylib.LoadTexture("Data/Images/playerShip1_blue.png"));
+            RedShip = (Raylib.LoadTexture("Data/Images/playerShip1_red.png"));
+            Player.image = new Sprite(BlueShip);
+            Raylib.InitAudioDevice();
+            Raylib.SetMasterVolume(1f);
+            Raylib.GetMasterVolume();
+            BgMusic = Raylib.LoadMusicStream("Data/Images/Song.mp3");
             AasteroidImage = new List<Texture2D>()
             {
                 Raylib.LoadTexture("Data/Images/meteorGrey_small1.png"),
@@ -150,7 +176,7 @@ namespace Asteroids
 
             Lasers = Raylib.LoadTexture("Data/Images/laserBlue01.png");
             bullets = new List<Bullet>();
-
+            Raylib.PlayMusicStream(BgMusic);
             StartLevel();
 
         }
